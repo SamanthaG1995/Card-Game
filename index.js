@@ -98,51 +98,134 @@ while (guessP2 != 'higher' && guessP2 != 'lower') {
   console.log('That is an invalid guess please enter higher or lower');
   guessP2 = prompt(player2 + ' do you think the next card is higher or lower than the previous card?');
 }
-//shows the next card
-console.log('The next card is ' + randomP2 + '!');
 
 //compares the two cards to see if each player for the correct answer
 if(numberP2 > numberP1){
   console.log('The new card was higher!');
 if (guessP1 == 'higher'){
   console.log(player1 + ' was correct!');
+
+  guessNoP1 = prompt(player1 + ' would you like to have a chance to guess the card number for an extra point? (you might loose a point if incorrect)')
+
+  while(guessNoP1 != 'yes' && guessNoP1 != 'no'){
+  console.log('That is an invalid input please enter yes or no');
+  guessNoP1 = prompt(player1 + ' would you like to have a chance to guess the card number for an extra point? (you might loose a point if incorrect)')
+}
+
+  if (guessNoP1 == 'yes'){
+    guessingP1 = prompt ('What do you think the card number is?')
+  if (guessingP1 == numberP2){
+    console.log('Congragulations you got it correct you get an extra point')
+    pointP1++
+  }else{
+    console.log('Sorry you got it incorrect you loose a point')
+    console.log('The card number was ' + numberP2)
+    pointP1--
+  }
+  }
+
   console.log(player1 + ' gets a point!')
   pointP1++
-  }else if(guess == 'lower'){
+  }else if(guessP1 == 'lower'){
   console.log(player1 + ' was incorrect!');
   livesP1++
   }
-}else if(numberP2 > numberP1){
+}
+if(numberP2 > numberP1){
   console.log('The new card was higher!');
 if (guessP2 == 'higher'){
   console.log(player2 + ' was correct!');
+
+  guessNoP1 = prompt(player1 + ' would you like to have a chance to guess the card number for an extra point? (you might loose a point if incorrect)')
+
+  while(guessNoP1 != 'yes' && guessNoP1 != 'no'){
+  console.log('That is an invalid input please enter yes or no');
+  guessNoP1 = prompt(player1 + ' would you like to have a chance to guess the card number for an extra point? (you might loose a point if incorrect)')
+}
+
+  if (guessNoP1 == 'yes'){
+    guessingP1 = prompt ('What do you think the card number is?')
+  if (guessingP1 == numberP2){
+    console.log('Congragulations you got it correct you get an extra point')
+    pointP1++
+  }else{
+    console.log('Sorry you got it incorrect you loose a point')
+    console.log('The card number was ' + numberP2)
+    pointP1--
+  }
+  }
+
   console.log(player2 + ' gets a point!')
   pointP2++
   }else if(guessP2 == 'lower'){
   console.log(player2 + ' was incorrect!');
   livesP2++
   }
-}else if(numberP1 > numberP2){
+}
+if(numberP1 > numberP2){
   console.log('The new card was lower!');
 if (guessP1 == 'lower'){
   console.log(player1 + ' was correct!');
-  console.log(player1 + ' gets a point!')
+
+  guessNoP2 = prompt(player2 + ' would you like to have a chance to guess the card number for an extra point? (you might loose a point if incorrect)')
+
+  while(guessNoP1 != 'yes' && guessNoP1 != 'no'){
+  console.log('That is an invalid input please enter yes or no');
+  guessNoP1 = prompt(player1 + ' would you like to have a chance to guess the card number for an extra point? (you might loose a point if incorrect)')
+}
+
+  if (guessNoP2 == 'yes'){
+    guessingP2 = prompt ('What do you think the card number is?')
+  if (guessingP2 == numberP2){
+    console.log('Congragulations you got it correct you get an extra point')
+    pointP1++
+  }else{
+    console.log('Sorry you got it incorrect you loose a point')
+    console.log('The card number was ' + numberP2)
+    pointP2--
+  }
+  }
+
+  console.log(player1 + ' gets a point!');
   pointP1++
   }else if(guessP1 == 'higher'){
   console.log(player1 + ' was incorrect!');
   livesP1++
   }
-}else if(numberP1 > numberP2){
+}
+if(numberP1 > numberP2){
   console.log('The new card was lower!');
 if (guessP2 == 'lower'){
   console.log(player2 + ' was correct!');
+
+  guessNoP2 = prompt(player2 + ' would you like to have a chance to guess the card number for an extra point? (you might loose a point if incorrect)')
+
+  while(guessNoP1 != 'yes' && guessNoP1 != 'no'){
+  console.log('That is an invalid input please enter yes or no');
+  guessNoP1 = prompt(player1 + ' would you like to have a chance to guess the card number for an extra point? (you might loose a point if incorrect)')
+}
+
+  if (guessNoP2 == 'yes'){
+    guessingP2 = prompt ('What do you think the card number is?')
+  if (guessingP2 == numberP2){
+    console.log('Congragulations you got it correct you get an extra point')
+    pointP2++
+  }else{
+    console.log('Sorry you got it incorrect you loose a point')
+    console.log('The card number was ' + numberP2)
+    pointP1--
+  }
+  }
+
   console.log(player2 + ' gets a point!')
   pointP2++
   }else if(guessP2 == 'higher'){
   console.log(player2 + ' was incorrect!');
   livesP2++
   }
-}else{
+}
+console.log('The next card is ' + randomP2 + '!');
+if (numberP1 == numberP2){
   console.log('The card was the same! No one gets a point');
 }
 
@@ -156,6 +239,9 @@ if (livesP1 == lives){
   console.log(player1 + ' is the winner due to no more lives left')
   break;
 }
+
+
+
 //adds round
 round++
 //stops the game if the users round is reached
