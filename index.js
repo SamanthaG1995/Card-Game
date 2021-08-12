@@ -122,7 +122,7 @@ if (guessP2 == 'higher'){
   console.log(player2 + ' was incorrect!');
   livesP2++
   }
-}else if(numberP1 < numberP2){
+}else if(numberP1 > numberP2){
   console.log('The new card was lower!');
 if (guessP1 == 'lower'){
   console.log(player1 + ' was correct!');
