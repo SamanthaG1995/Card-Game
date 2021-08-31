@@ -120,7 +120,7 @@ do {
 
 
 
-      console.log(player1 + ' gets a point!')
+
       pointP1++
     } else if (guessP1 == 'lower') {
       console.log(player1 + ' was incorrect!');
@@ -140,7 +140,7 @@ do {
       console.log(player2 + ' was correct!');
 
 
-      console.log(player2 + ' gets a point!')
+ 
       pointP2++
     } else if (guessP2 == 'lower') {
       console.log(player2 + ' was incorrect!');
@@ -154,7 +154,7 @@ do {
       console.log(player1 + ' was correct!');
 
 
-      console.log(player1 + ' gets a point!');
+
       pointP1++
     } else if (guessP1 == 'higher') {
       console.log(player1 + ' was incorrect!');
@@ -165,35 +165,46 @@ do {
     if (guessP2 == 'lower') {
       console.log(player2 + ' was correct!');
 
-      console.log(player2 + ' gets a point!')
+
       pointP2++
     } else if (guessP2 == 'higher') {
       console.log(player2 + ' was incorrect!');
       livesP2++
     }
   }
+  if (numberP1 == numberP2) {
+    console.log('The card was the same! Game Over!')
+    break;
+  }
 
+  if (livesP2 == livesP1) {
+    console.log('You both ran out of lives. The game continues you both have an extra life')
+    livesP1++
+    livesP2++
+  }
   //stops the game if there is no more lives
   if (livesP1 == lives) {
     console.log(player1 + ' ran out of lives')
-    console.log(player2 + ' is the winner due to no more lives left')
+    console.log('The game is over because ' + player1 + ' has no more lives left')
     break;
-  } else if (livesP2 == lives) {
+  } 
+  if (livesP2 == lives) {
     console.log(player2 + ' ran out of lives')
-    console.log(player1 + ' is the winner due to no more lives left')
+    console.log('The game is over because ' + player2 + ' has no more lives left')
     break;
   }
 
 
-
   //adds round
   round++
-  //stops the game if the users round is reached
-}while (round < playerRound)
-    //calculates the amount of swaps
+      //calculates the amount of swaps
     if (swap == 3) {
       console.log('You have no more swaps left. Game Over')
+      break;
     }
+  //stops the game if the users round is reached
+}while (round < playerRound)
+
 
   //displays the amount of points each player has
   console.log(player1 + ' has ' + pointP1 + ' points!');
