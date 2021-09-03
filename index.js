@@ -26,13 +26,13 @@ console.log('Welcome ' + player1 + ' and ' + player2 + ' to the Card Guessing Ga
 
 
 //setting each variable with a starting point/number
-let swap = 0;
+let swap = 3;
 let livesP1 = 0;
 let livesP2 = 0;
 let round = 0;
 let pointP1 = 0;
 let pointP2 = 0;
-let card = ['an ace', 'a 2', 'a 3', 'a 4', 'a 5', 'a 6', 'a 7', 'an 8', 'a 9', 'a 10', 'a jack', 'a queen', 'a king'];
+let card = ['an Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'a Jack', 'a Queen', 'a King'];
 
 
 
@@ -69,12 +69,29 @@ do {
   randomP1 = card[numberP1];
   numberP2 = Math.floor(Math.random() * card.length + 0);
   randomP2 = card[numberP2];
-
+  let swapleft = swap - 1
   //prints the random card
   console.log('The starting card is ' + randomP1 + '!');
 
+if (swap == 0){
+let reset = prompt('You have no more swaps left. Would you like to use a point each to reset all 3 swaps? if not the game ends.')
+
+  while (reset != 'yes' && reset != 'no') {
+    console.log('That is an invalid input please enter yes or no');
+    swaping = prompt('Would you like to use 1 point each to reset all your swaps? If not the game ends (+3 swaps)');
+  }
+if (reset == 'yes'){
+  swap = swap + 3
+  swapleft = swapleft + 3
+  pointP1--
+  pointP2--
+}else if (reset == 'no'){
+  console.log('Ok, Game Over')
+  break;
+}
+}
   //asks the users if they would like to swap their card
-  let swaping = prompt('Would you like to swap the card? Remember you only get the chance to swap 3 cards');
+  let swaping = prompt('Would you like to swap the card? Remember you only get the chance to swap 3 cards. You have ' + swap + ' swaps left!');
 
   //if 'yes' or 'no' is not entered it will keep asking this question
   while (swaping != 'yes' && swaping != 'no') {
@@ -83,11 +100,14 @@ do {
   }
 
   //randomises a random card again if they want to swap the card
+  
   if (swaping == 'yes') {
     numberP1 = Math.floor(Math.random() * card.length + 0);
     randomP1 = card[numberP1];
-    console.log('Ok your new card is ' + randomP1);
-    swap++
+    console.log('Ok, you have ' + swapleft + ' swaps left')
+    console.log('Your new card is ' + randomP1);
+    swap--
+
   }
 
   //asks the player if they think the following card is going to be higher or lower
@@ -106,7 +126,7 @@ do {
     guessP2 = prompt(player2 + ' do you think the next card is higher or lower than the starting card?');
   }
 
-  console.log('The next card is ' + randomP2 + '!');
+  console.log('The new card is ' + randomP2 + '!');
 
   //compares the two cards to see if each player for the correct answer
   if (numberP2 > numberP1) {
@@ -186,10 +206,14 @@ do {
   //stops the game if there is no more lives
   if (livesP1 == lives){
     console.log(player1 + ' ran out of lives')
-    break;
   }
   if (livesP2 == lives){
     console.log(player2 + ' ran out of lives')
+  }
+  if (livesP1 == lives){
+    break;
+  }
+  if (livesP2 == lives){
     break;
   }
 
@@ -198,10 +222,7 @@ do {
   //adds round
   round++
       //calculates the amount of swaps
-    if (swap == 3) {
-      console.log('You have no more swaps left. Game Over')
-    break;
-    }
+
   //stops the game if the users round is reached
 }while (round < playerRound)
 
