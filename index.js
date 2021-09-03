@@ -193,8 +193,7 @@ if (reset == 'yes'){
     }
   }
   if (numberP1 == numberP2) {
-    console.log('The card was the same! Game Over!')
-    break;
+    console.log('The card was the same! Nothing happens, carry on')
   }
 
 
