@@ -32,7 +32,7 @@ let livesP2 = 0;
 let round = 0;
 let pointP1 = 0;
 let pointP2 = 0;
-let card = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+let card = ['an ace', 'a 2', 'a 3', 'a 4', 'a 5', 'a 6', 'a 7', 'an 8', 'a 9', 'a 10', 'a jack', 'a queen', 'a king'];
 
 
 
@@ -40,10 +40,10 @@ let card = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 let lives = prompt('How many lives should each player have?')
 
 //boundaries for their input
-while ((isNaN(lives)) || (lives < 1) || (lives > 5) || (lives == null) || (lives == ' ') || (lives % 1 != 0)) {
+while ((isNaN(lives)) || (lives < 1) || (lives > 10) || (lives == null) || (lives == ' ') || (lives % 1 != 0)) {
 
   // if the user inputs out of the bounrdries they will be asked again
-  console.log('That is not a valid number. Please enter a number from 1-5');
+  console.log('That is not a valid number. Please enter a number from 1-10');
   lives = prompt('How many lives should each player have?');
 }
 
@@ -177,30 +177,30 @@ do {
     break;
   }
 
-  if (livesP2 == livesP1) {
-    console.log('You both ran out of lives. The game continues you both have an extra life')
-    livesP1++
-    livesP2++
+
+  if (livesP1 == lives && livesP2 == lives){
+    console.log('You both ran out of lives. The game continues until the next player looses a life')
+    livesP1--
+    livesP2--
   }
   //stops the game if there is no more lives
-  if (livesP1 == lives) {
+  if (livesP1 == lives){
     console.log(player1 + ' ran out of lives')
-    console.log('The game is over because ' + player1 + ' has no more lives left')
     break;
-  } 
-  if (livesP2 == lives) {
+  }
+  if (livesP2 == lives){
     console.log(player2 + ' ran out of lives')
-    console.log('The game is over because ' + player2 + ' has no more lives left')
     break;
   }
 
+  
 
   //adds round
   round++
       //calculates the amount of swaps
     if (swap == 3) {
       console.log('You have no more swaps left. Game Over')
-      break;
+    break;
     }
   //stops the game if the users round is reached
 }while (round < playerRound)
@@ -217,4 +217,3 @@ do {
   } else {
     console.log("It's a tie! You both have " + pointP1 + ' points!')
   }
-
